@@ -92,12 +92,18 @@ var _express = __webpack_require__(4);
 
 var _express2 = _interopRequireDefault(_express);
 
+var _log = __webpack_require__(9);
+
+var _log2 = _interopRequireDefault(_log);
+
 var _renderer = __webpack_require__(5);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var log = new _log2.default('info');
+var PORT = process.env.PORT || 8000;
 var app = (0, _express2.default)();
 
 app.use(_express2.default.static('public'));
@@ -109,8 +115,8 @@ app.get('*', function (req, res) {
     }
 });
 
-app.listen(3000, function () {
-    console.log('Listening on port 3000');
+app.listen(PORT, function () {
+    log.info('Server is running on port: ' + PORT);
 });
 
 /***/ }),
@@ -274,6 +280,12 @@ var HomePage = function (_Component) {
 }(_react.Component);
 
 exports.default = HomePage;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = require("log");
 
 /***/ })
 /******/ ]);
