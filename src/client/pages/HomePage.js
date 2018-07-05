@@ -16,7 +16,7 @@ class HomePage extends Component {
         return (
             <div>
                 {this.head()}
-                <div>Home Component YO!</div>
+                <div>Home Component!</div>
                 <button onClick={() => console.log('Button pressed.')}>Press me!</button>
             </div>
         )
