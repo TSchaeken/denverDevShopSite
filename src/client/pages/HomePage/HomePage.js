@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import NavBar from './components/NavBar';
-// import Jumbotron from './components/Jumbotron';
+import Jumbotron from './components/Jumbotron';
 const env = process.env.NODE_ENV || 'development';
 
 class HomePage extends Component {
@@ -28,7 +28,7 @@ class HomePage extends Component {
                 {this.head()}
                 <div>
                     <NavBar />
-                    {/* <Jumbotron /> */}
+                    <Jumbotron />
                     <h2>Contact Us</h2>
                     <p>(720) 588-3355</p>
                     <a
