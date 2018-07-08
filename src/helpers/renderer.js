@@ -27,19 +27,9 @@ export default (req) => {
         <!-- End Google Tag Manager (noscript) -->
     `
 
-    const materializeHead = `
-        <!-- Import Google Icon Font -->
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- Import materialize.css -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet">
-    `
-
-    const materializeBody = `
-        <!-- Import jQuery before materialize.js -->
-        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-        <!-- And then your bundled js -->
-        <script src="path/to/your/bundle.js"></script>
+    const materialHead = `
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     `
 
     const helmet = Helmet.renderStatic()
@@ -70,11 +60,10 @@ export default (req) => {
                 ${helmet.title.toString()}
                 ${helmet.meta.toString()}
                 ${helmet.link.toString()}
-                ${materializeHead}
+                ${materialHead}
             </head>
             <body ${helmet.bodyAttributes.toString()}>
                 ${bodyTagManager}
-                ${materializeBody}
                 <div id="root">${content}</div>
                 <script src="bundle.js"></script>
             </body>
