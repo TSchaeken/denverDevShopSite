@@ -8,4 +8,5 @@ ReactDOM.hydrate(
     <BrowserRouter>
         <Routes />
     </BrowserRouter>,
-    document.querySelector('#root'))
+    document.querySelector('#root')
+)
