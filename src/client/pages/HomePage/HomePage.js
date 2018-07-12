@@ -28,8 +28,29 @@ class HomePage extends Component {
             <div>
                 {this.head()}
                 <CssBaseline />
-                <div>
-                    <NavBar />
+                <div id='home'>
+                    <Jumbotron />
+                    <h2>Contact Us</h2>
+                    <p>(720) 588-3355</p>
+                    <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSfZImwNRPJ7v_PcKh6p37GqrxxvoJ5FczlEoSFAjpgDfYXT5g/viewform?usp=sf_link"
+                        target="_blank"
+                    >
+                        Contact Request
+                    </a>
+                </div>
+                <div id='about'>
+                    <Jumbotron />
+                    <h2>Contact Us</h2>
+                    <p>(720) 588-3355</p>
+                    <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSfZImwNRPJ7v_PcKh6p37GqrxxvoJ5FczlEoSFAjpgDfYXT5g/viewform?usp=sf_link"
+                        target="_blank"
+                    >
+                        Contact Request
+                    </a>
+                </div>
+                <div id='contact'>
                     <Jumbotron />
                     <h2>Contact Us</h2>
                     <p>(720) 588-3355</p>
