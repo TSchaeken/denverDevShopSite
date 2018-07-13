@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss/lib/injectSheet';
+import { withStyles } from '@material-ui/core';
 
 const styles = {
   jumbotron: {
@@ -27,4 +28,4 @@ Jumbotron.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default injectSheet(styles)(Jumbotron);
+export default withStyles(styles)(Jumbotron);
