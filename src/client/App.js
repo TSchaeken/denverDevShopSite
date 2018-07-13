@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
-import Nav from './pages/HomePage/components/NavBar';
+import HomePage from './Components/HomePage';
+import NavBar from './Components/NavBar';
 
 class App extends Component {
   componentDidMount() {
@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <NavBar />
         <Route exact path="/" component={HomePage} />
       </div>
     );
