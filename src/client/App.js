@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import HomePage from './Components/HomePage';
+import HomePage from './Components/Main';
 import NavBar from './Components/NavBar';
 
 class App extends Component {
