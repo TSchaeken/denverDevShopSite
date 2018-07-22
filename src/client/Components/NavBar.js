@@ -15,12 +15,12 @@ const styles = {
     flexGrow: 1
   },
   nav: {
-    position: 'fixed',
+    width:'100%',
     top: 0,
     transition: 'top 0.3s'
   },
    navhidden: {
-    position:'fixed',
+    width:'100%',
     top: '-100px',
     transition: 'top 0.3s'
    }
