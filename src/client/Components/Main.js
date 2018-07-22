@@ -3,20 +3,26 @@ import { Helmet } from 'react-helmet';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
-import unionStation from '../images/unionStation.jpg';
+import UnionStation from '../images/unionStation.jpg';
 const env = process.env.NODE_ENV || 'development';
 
 //Photo by Owen CL on Unsplash
 
 const styles = {
+  root: {
+    flexGrow: 1,
+    height: '200vh'
+  },
   main: {
-    background: `url(${unionStation}) no-repeat center center fixed`,
+    background: `url(${UnionStation}) no-repeat center center fixed`,
     height: '100vh',
     width: '100%',
     backgroundSize: 'cover',
+
   },
   title: {
-    fontSize: '100px'
+    fontSize: '100px',
+    color: 'white'
   }
 };
 
@@ -43,8 +49,12 @@ class HomePage extends Component {
       <div>
         {this.head()}
         <CssBaseline />
-        <div className={classes.main}>
-          <Typography variant="headline" className={classes.title}> Denver Dev Shop </Typography>
+        <div className={classes.root}>
+          <div className={classes.main}>
+            <Typography variant="headline" className={classes.title}>
+              Denver Dev Shop
+            </Typography>
+          </div>
         </div>
       </div>
     );

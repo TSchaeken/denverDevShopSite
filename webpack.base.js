@@ -13,15 +13,6 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {}
-          }
-        ]
-      },
-      {
         test: /\.(gif|png|jpe?g|svg)$/,
         use: [
           'file-loader',

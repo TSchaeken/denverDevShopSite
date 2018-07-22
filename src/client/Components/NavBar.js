@@ -17,11 +17,12 @@ const styles = {
   nav: {
     position: 'fixed',
     top: 0,
-    transition: 'top 0.2s'
+    transition: 'top 0.3s'
   },
    navhidden: {
     position:'fixed',
-    top: '-100px'
+    top: '-100px',
+    transition: 'top 0.3s'
    }
 };
 
