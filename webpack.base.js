@@ -9,12 +9,30 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           plugins: ['transform-class-properties'],
-          presets: [
-            'react',
-            'stage-0',
-            ['env', { targets: { browsers: ['last 2 versions'] } }]
-          ]
+          presets: ['react', 'stage-0', ['env', { targets: { browsers: ['last 2 versions'] } }]]
         }
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true, // webpack@1.x
+              disable: true // webpack@2.x and newer
+            }
+          }
+        ]
       }
     ]
   }

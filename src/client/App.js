@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import HomePage from './Components/Main';
+import Main from './Components/Main';
 import NavBar from './Components/NavBar';
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={Main} />
       </div>
     );
   }

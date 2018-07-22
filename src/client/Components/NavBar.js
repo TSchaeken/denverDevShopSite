@@ -2,24 +2,50 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { HashLink as Link } from 'react-router-hash-link';
 import { withStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
-import { Typography, Button } from '@material-ui/core';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 const styles = {
   root: {
     flexGrow: 1,
-  }
+  },
+  flex: {
+    flexGrow: 1
+  },
+  nav: {
+    position: 'fixed',
+    top: 0,
+    transition: 'top 0.2s'
+  },
+   navhidden: {
+    position:'fixed',
+    top: '-100px'
+   }
 };
 
 class NavBar extends Component {
+  state = {
+    isTop: true
+  };
+
+  componentDidMount() {
+    document.addEventListener('scroll', () => {
+      const isTop = window.scrollY < 100;
+      if (isTop !== this.state.isTop) {
+        this.setState({ isTop });
+      }
+    });
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar position="fixed">
+        <AppBar className={this.state.isTop ? `${classes.navhidden}` : `${classes.nav}`}>
           <Toolbar>
-            <Typography variant="title" color="inherit">
+            <Typography variant="title" color="inherit" className={classes.flex}>
               Denver Dev Shop
             </Typography>
             <Button smooth component={Link} color="inherit" to="/#home">
