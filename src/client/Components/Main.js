@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import UnionStation from '../images/unionStation.jpg';
+import Form from './Form';
 const env = process.env.NODE_ENV || 'development';
 
 //Photo by Owen CL on Unsplash
@@ -12,7 +13,7 @@ const env = process.env.NODE_ENV || 'development';
 const styles = {
   root: {
     flexGrow: 1,
-    width:'100%'
+    width: '100%'
   },
   main: {
     background: `linear-gradient(
@@ -28,11 +29,18 @@ const styles = {
     marginLeft: '25px'
   },
   about: {
-    width:'100%',
+    width: '100%',
+    margin: '10px 0'
   },
   aboutInfo: {
-    height: '100px',
-    backgroundColor: 'green'
+    height: '400px',
+    margin: 'auto 10px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  divider: {
+    margin: '10px 0'
   }
 };
 
@@ -59,7 +67,7 @@ class HomePage extends Component {
       <div>
         {this.head()}
         <div className={classes.root}>
-          <div className={classes.main}>
+          <div className={classes.main} id="home">
             <Typography variant="display4" className={classes.title}>
               Denver Dev Shop
             </Typography>
@@ -70,20 +78,29 @@ class HomePage extends Component {
               Develop
             </Typography>
             <Typography variant="display3" className={classes.title}>
-              Deploy
+              Deliver
             </Typography>
           </div>
-          <Grid container className={classes.about} justify='center'>
+          <Grid container className={classes.about} id="about">
             <Grid item xs>
-              <Paper className={classes.aboutInfo}>xs=12</Paper>
+              <Paper className={classes.aboutInfo} elevation={12}>
+                <Typography variant="display3">Who</Typography>
+              </Paper>
             </Grid>
             <Grid item xs={4}>
-              <Paper className={classes.aboutInfo}>xs=12</Paper>
+              <Paper className={classes.aboutInfo} elevation={12}>
+                <Typography variant="display3">What</Typography>
+              </Paper>
             </Grid>
             <Grid item xs>
-              <Paper className={classes.aboutInfo}>xs=12</Paper>
+              <Paper className={classes.aboutInfo} elevation={12}>
+                <Typography variant="display3">Why</Typography>
+              </Paper>
             </Grid>
           </Grid>
+          <div id="contact">
+            <Form />
+          </div>
         </div>
       </div>
     );
