@@ -22,7 +22,7 @@ const styles = {
    navhidden: {
     width:'100%',
     top: '-100px',
-    transitionDelay: '1s',
+    transitionDelay: '0.5s',
     transition: 'top 0.5s'
    }
 };
