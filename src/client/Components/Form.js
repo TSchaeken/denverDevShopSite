@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 const styles = {
   root: {}
@@ -12,18 +13,67 @@ class Form extends Component {
     email: '',
     location: '',
     message: '',
-    sent: 0
+    sent: false
+  };
+
+  onChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  onSubmit = event => {
+    event.preventDefault();
+    this.setState({
+      sent: true
+    });
   };
 
   render() {
     return (
-      <form>
-        <input placeholder="First name" value={this.state.firstName} onChange={e => this.setState({ firstName: e.target.value})}/>
-        <input placeholder="Last name" value={this.state.lastName} onChange={e => this.setState({ lastName: e.target.value})}/>
-        <input placeholder="Email" value={this.state.email} onChange={e => this.setState({ email: e.target.value})}/>
-        <input placeholder="Location" value={this.state.location} onChange={e => this.setState({ location: e.target.value})}/>
-        <input placeholder="Message" value={this.state.message} onChange={e => this.setState({ message: e.target.value})}/>
-      </form>
+      <div>
+        {!this.state.sent ? (
+          <form onSubmit={this.onSubmit}>
+            <label htmlFor="firstName">Enter username</label>
+            <input
+              id="firstName"
+              name="firstName"
+              placeholder="First name"
+              value={this.state.firstName}
+              onChange={e => this.onChange(e)}
+            />
+            <label htmlFor="lastName">Enter username</label>
+            <input
+              id="lastName"
+              name="lastName"
+              placeholder="Last name"
+              value={this.state.lastName}
+              onChange={e => this.onChange(e)}
+            />
+            <input
+              name="email"
+              placeholder="Email"
+              value={this.state.email}
+              onChange={e => this.onChange(e)}
+            />
+            <input
+              name="location"
+              placeholder="Location"
+              value={this.state.location}
+              onChange={e => this.onChange(e)}
+            />
+            <input
+              name="message"
+              placeholder="Message"
+              value={this.state.message}
+              onChange={e => this.onChange(e)}
+            />
+            <button>Touch me</button>
+          </form>
+        ) : (
+          <Typography variant="display3">Thanks for your interest!</Typography>
+        )}
+      </div>
     );
   }
 }

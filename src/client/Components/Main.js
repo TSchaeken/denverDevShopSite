@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
+import { HashLink as Link } from 'react-router-hash-link';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import UnionStation from '../images/unionStation.jpg';
@@ -22,6 +24,9 @@ const styles = {
     ), url(${UnionStation}) no-repeat center center`,
     height: '100vh',
     width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundSize: 'cover'
   },
   title: {
@@ -30,7 +35,8 @@ const styles = {
   },
   about: {
     width: '100%',
-    margin: '10px 0'
+    padding: '20px',
+    backgroundImage: 'linear-gradient(to right, #243949 0%, #517fa4 100%)'
   },
   aboutInfo: {
     height: '400px',
@@ -39,8 +45,8 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center'
   },
-  divider: {
-    margin: '10px 0'
+  contact: {
+    height: '400px'
   }
 };
 
@@ -71,15 +77,20 @@ class HomePage extends Component {
             <Typography variant="display4" className={classes.title}>
               Denver Dev Shop
             </Typography>
-            <Typography variant="display3" className={classes.title}>
-              Design
-            </Typography>
-            <Typography variant="display3" className={classes.title}>
-              Develop
-            </Typography>
-            <Typography variant="display3" className={classes.title}>
-              Deliver
-            </Typography>
+            <div>
+              <Typography variant="display3" className={classes.title}>
+                Design
+              </Typography>
+              <Typography variant="display3" className={classes.title}>
+                Develop
+              </Typography>
+              <Typography variant="display3" className={classes.title}>
+                Deliver
+              </Typography>
+            </div>
+            <Button smooth component={Link} color="inherit" to="/#contact">
+              Contact Us
+            </Button>
           </div>
           <Grid container className={classes.about} id="about">
             <Grid item xs>
