@@ -36,14 +36,15 @@ const styles = {
   about: {
     width: '100%',
     padding: '20px',
-    backgroundImage: 'linear-gradient(to right, #243949 0%, #517fa4 100%)'
+    backgroundImage: 'hsl(210, 9%, 96%)'
   },
   aboutInfo: {
     height: '400px',
     margin: 'auto 10px',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    boxShadow: '0 2px 6px 0 hsla(0, 0%, 0.2)'
   },
   contact: {
     height: '400px'
