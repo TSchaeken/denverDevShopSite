@@ -88,7 +88,7 @@ class Form extends Component {
             <TextField
               name="message"
               label="Message"
-              multiline='true'
+              multiline
               rows="6"
               className={`${classes.textField} ${classes.Message}`}
               value={this.state.message}
