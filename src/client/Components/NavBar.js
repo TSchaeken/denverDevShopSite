@@ -9,45 +9,59 @@ import Button from '@material-ui/core/Button';
 
 const styles = {
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   flex: {
     flexGrow: 1
   },
   nav: {
-    width:'100%',
+    width: '100%',
     top: 0,
     transition: 'top 0.3s'
   },
-   navhidden: {
-    width:'100%',
+  navhidden: {
+    width: '100%',
     top: '-100px',
-    transitionDelay: '0.5s',
     transition: 'top 0.5s'
-   }
+  }
 };
 
 class NavBar extends Component {
   state = {
-    isTop: true
+    goingUp: true
   };
 
-  componentDidMount() {
-    document.addEventListener('scroll', () => {
-      const isTop = window.scrollY < 100;
-      if (isTop !== this.state.isTop) {
-        this.setState({ isTop });
-      }
-    });
-  }
+  componentDidMount = () => {
+    let lastScrollTop = 50;
+    window.addEventListener(
+      'scroll',
+      function() {
+        let st = window.pageYOffset || document.documentElement.scrollTop;
+        if (st > lastScrollTop) {
+          this.setState({ goingUp: true });
+        } else {
+          this.setState({ goingUp: false });
+        }
+        lastScrollTop = st <= 0 ? 0 : st;
+      }.bind(this)
+    );
+  };
 
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar className={this.state.isTop ? `${classes.navhidden}` : `${classes.nav}`}>
+        <AppBar
+          className={
+            this.state.goingUp ? `${classes.navhidden}` : `${classes.nav}`
+          }
+        >
           <Toolbar>
-            <Typography variant="title" color="inherit" className={classes.flex}>
+            <Typography
+              variant="title"
+              color="inherit"
+              className={classes.flex}
+            >
               Denver Dev Shop
             </Typography>
             <Button smooth component={Link} color="inherit" to="/#home">
