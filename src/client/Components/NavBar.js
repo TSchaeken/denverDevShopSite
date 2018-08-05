@@ -14,7 +14,12 @@ const styles = {
   flex: {
     flexGrow: 1
   },
-  nav: {
+  navtop: {
+    width: '100%',
+    top: 0,
+    backgroundColor: 'yellow'
+  },
+  navshow: {
     width: '100%',
     top: 0,
     transition: 'top 0.3s'
@@ -28,24 +33,34 @@ const styles = {
 
 class NavBar extends Component {
   state = {
-    goingUp: true
+    top: true,
+    goingUp: false
   };
 
   componentDidMount = () => {
-    let lastScrollTop = 50;
-    window.addEventListener(
-      'scroll',
-      function() {
+    this.scollNavUpdate();
+  };
+
+  scollNavUpdate() {
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        this.setState({top: false})
         let st = window.pageYOffset || document.documentElement.scrollTop;
         if (st > lastScrollTop) {
-          this.setState({ goingUp: true });
-        } else {
           this.setState({ goingUp: false });
+          console.log('going down');
+        } else {
+          this.setState({ goingUp: true });
+          console.log('going up');
         }
         lastScrollTop = st <= 0 ? 0 : st;
-      }.bind(this)
-    );
-  };
+      }
+      else {
+        this.setState({top:true, goingUp:false})
+      }
+    });
+  }
 
   render() {
     const { classes } = this.props;
@@ -53,7 +68,9 @@ class NavBar extends Component {
       <div className={classes.root}>
         <AppBar
           className={
-            this.state.goingUp ? `${classes.navhidden}` : `${classes.nav}`
+            this.state.top
+              ? `${classes.navtop}`
+              : `${this.state.goingUp ? classes.navshow : classes.navhidden}`
           }
         >
           <Toolbar>
@@ -75,6 +92,7 @@ class NavBar extends Component {
             </Button>
           </Toolbar>
         </AppBar>
+        <div ref="scan" width={300} height={1} />
       </div>
     );
   }
