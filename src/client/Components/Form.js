@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
-const styles = {
-  root: {}
+const styles =  {
+  container: {
+    display: 'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    width: '100%',
+    height: '800px'
+  },
+  textField: {
+    width: '300px',
+    margin:'20px 40px',
+    paddingRight:'40px',
+    paddingTop:'20px'
+  },
+  Message: {
+    width:'100%'
+  }
 };
 
 class Form extends Component {
@@ -30,48 +47,59 @@ class Form extends Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
-      <div>
+      <div className={classes.container}>
         {!this.state.sent ? (
-          <form onSubmit={this.onSubmit}>
-            <label htmlFor="firstName">Enter username</label>
-            <input
+          <form>
+            <TextField
               id="firstName"
+              label="First Name"
               name="firstName"
-              placeholder="First name"
+              className={classes.textField}
               value={this.state.firstName}
               onChange={e => this.onChange(e)}
             />
-            <label htmlFor="lastName">Enter username</label>
-            <input
+            <TextField
               id="lastName"
+              label="Last Name"
               name="lastName"
-              placeholder="Last name"
+              className={classes.textField}
               value={this.state.lastName}
               onChange={e => this.onChange(e)}
             />
-            <input
+            <br/>
+            <TextField
               name="email"
-              placeholder="Email"
+              label="Email Address"
+              className={classes.textField}
               value={this.state.email}
               onChange={e => this.onChange(e)}
             />
-            <input
+            <TextField
               name="location"
-              placeholder="Location"
+              label="Location"
+              className={classes.textField}
               value={this.state.location}
               onChange={e => this.onChange(e)}
             />
-            <input
+            <br/>
+            <TextField
               name="message"
-              placeholder="Message"
+              label="Message"
+              multiline
+              rows="6"
+              className={`${classes.textField} ${classes.Message}`}
               value={this.state.message}
               onChange={e => this.onChange(e)}
+
             />
-            <button>Touch me</button>
+            <br/>
+            <Button onClick={this.onSubmit}>Submit</Button>
           </form>
         ) : (
-          <Typography variant="display3">Thanks for your interest!</Typography>
+          <Typography variant="display3">Thanks for your interest, we'll get back to you soon.</Typography>
         )}
       </div>
     );

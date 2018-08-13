@@ -9,34 +9,55 @@ import Button from '@material-ui/core/Button';
 
 const styles = {
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   flex: {
     flexGrow: 1
   },
-  nav: {
-    width:'100%',
+  navtop: {
+    width: '100%',
+    top: 0,
+    backgroundColor: 'yellow'
+  },
+  navshow: {
+    width: '100%',
     top: 0,
     transition: 'top 0.3s'
   },
-   navhidden: {
-    width:'100%',
+  navhidden: {
+    width: '100%',
     top: '-100px',
-    transitionDelay: '0.5s',
     transition: 'top 0.5s'
-   }
+  }
 };
 
 class NavBar extends Component {
   state = {
-    isTop: true
+    top: true,
+    goingUp: false
   };
 
-  componentDidMount() {
-    document.addEventListener('scroll', () => {
-      const isTop = window.scrollY < 100;
-      if (isTop !== this.state.isTop) {
-        this.setState({ isTop });
+  componentDidMount = () => {
+    this.scollNavUpdate();
+  };
+
+  scollNavUpdate() {
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        this.setState({top: false})
+        let st = window.pageYOffset || document.documentElement.scrollTop;
+        if (st > lastScrollTop) {
+          this.setState({ goingUp: false });
+          console.log('going down');
+        } else {
+          this.setState({ goingUp: true });
+          console.log('going up');
+        }
+        lastScrollTop = st <= 0 ? 0 : st;
+      }
+      else {
+        this.setState({top:true, goingUp:false})
       }
     });
   }
@@ -45,9 +66,19 @@ class NavBar extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar className={this.state.isTop ? `${classes.navhidden}` : `${classes.nav}`}>
+        <AppBar
+          className={
+            this.state.top
+              ? `${classes.navtop}`
+              : `${this.state.goingUp ? classes.navshow : classes.navhidden}`
+          }
+        >
           <Toolbar>
-            <Typography variant="title" color="inherit" className={classes.flex}>
+            <Typography
+              variant="title"
+              color="inherit"
+              className={classes.flex}
+            >
               Denver Dev Shop
             </Typography>
             <Button smooth component={Link} color="inherit" to="/#home">
@@ -61,6 +92,7 @@ class NavBar extends Component {
             </Button>
           </Toolbar>
         </AppBar>
+        <div ref="scan" width={300} height={1} />
       </div>
     );
   }
