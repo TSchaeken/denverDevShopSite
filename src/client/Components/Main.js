@@ -82,9 +82,6 @@ class HomePage extends Component {
                 Deliver
               </Typography>
             </div>
-            <Button smooth component={Link} color="inherit" to="/#contact">
-              Contact Us
-            </Button>
           </div>
           <div id="about">
             <About />

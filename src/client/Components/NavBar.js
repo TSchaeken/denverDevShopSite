@@ -56,8 +56,8 @@ class NavBar extends Component {
       pos: 0
     };
 
-    this.topDetect = _.throttle(this.topDetect.bind(this), 100);
-    this.scrollDirection = _.throttle(this.scrollDirection.bind(this), 150, { leading: true });
+    this.topDetect = _.throttle(this.topDetect.bind(this), 50);
+    this.scrollDirection = _.throttle(this.scrollDirection.bind(this), 50, { leading: true });
   }
 
   componentDidMount() {
@@ -99,12 +99,11 @@ class NavBar extends Component {
         });
         break;
       }
-      case 0 < x && x <= 650 && this.state.detached === true: {
-        this.setState({
-          ...this.state
-        });
-        break;
-      }
+      // case 0 < x && x <= 650 && this.state.detached === true: {
+      //   this.setState({
+      //   });
+      //   break;
+      // }
       case x > 650: {
         this.setState({
           top: false,
