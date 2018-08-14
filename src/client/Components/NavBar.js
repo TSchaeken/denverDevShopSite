@@ -6,6 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import _ from 'lodash';
 
 const styles = {
   root: {
@@ -15,70 +16,142 @@ const styles = {
     flexGrow: 1
   },
   navtop: {
+    position: 'absolute',
+    boxShadow: 'none',
     width: '100%',
     top: 0,
-    backgroundColor: 'yellow'
+    backgroundColor: 'transparent',
+    transition: 'background-color 0.5s, color 0.5s'
   },
   navshow: {
+    position: 'fixed',
     width: '100%',
     top: 0,
-    transition: 'top 0.3s'
+    transition: 'top 0.3s',
+    backgroundColor: 'white',
+    color: 'black'
   },
   navhidden: {
     width: '100%',
     top: '-100px',
-    transition: 'top 0.5s'
+    transition: 'top 0.5s',
+    backgroundColor: 'white',
+    color: 'black'
+  },
+  invisible: {
+    width: '100%',
+    top: '-100px',
+    backgroundColor: 'transparent',
+    color: 'transparent'
   }
 };
 
 class NavBar extends Component {
-  state = {
-    top: true,
-    goingUp: false
-  };
+  constructor() {
+    super();
+    this.state = {
+      top: true,
+      detached: false,
+      goingUp: false,
+      pos: 0
+    };
 
-  componentDidMount = () => {
-    this.scollNavUpdate();
-  };
+    this.topDetect = _.throttle(this.topDetect.bind(this), 100);
+    this.scrollDirection = _.throttle(this.scrollDirection.bind(this), 150, { leading: true });
+  }
 
-  scollNavUpdate() {
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 100) {
-        this.setState({top: false})
-        let st = window.pageYOffset || document.documentElement.scrollTop;
-        if (st > lastScrollTop) {
-          this.setState({ goingUp: false });
-          console.log('going down');
-        } else {
-          this.setState({ goingUp: true });
-          console.log('going up');
-        }
-        lastScrollTop = st <= 0 ? 0 : st;
+  componentDidMount() {
+    console.log('MOUNTED');
+    window.addEventListener('scroll', this.topDetect);
+    window.addEventListener('scroll', this.scrollDirection);
+  }
+
+  componentWillUnmount() {
+    console.log('UNMOUNTED');
+    window.removeEventListener('scroll', this.topDetect);
+    window.removeEventListener('scroll', this.scrollDirection);
+  }
+
+  topDetect() {
+    let x = window.pageYOffset || document.documentElement.scrollTop;
+    console.log(x);
+    switch (true) {
+      case x == 0: {
+        this.setState({
+          top: true,
+          detached: false,
+          goingUp: false,
+          pos: 0
+        });
+        break;
       }
-      else {
-        this.setState({top:true, goingUp:false})
+      case 0 < x && x <= 400 && this.state.detached === false: {
+        this.setState({
+          top: true,
+          detached: false
+        });
+        break;
       }
+      case 400 < x && x <= 650 && this.state.detached === false: {
+        this.setState({
+          top: false,
+          detached: false
+        });
+        break;
+      }
+      case 0 < x && x <= 650 && this.state.detached === true: {
+        this.setState({
+          ...this.state
+        });
+        break;
+      }
+      case x > 650: {
+        this.setState({
+          top: false,
+          detached: true
+        });
+        break;
+      }
+      default: {
+        this.setState({
+          ...this.state
+        });
+      }
+    }
+  }
+
+  scrollDirection() {
+    let lastScrollTop = this.state.pos;
+    let st = window.pageYOffset || document.documentElement.scrollTop;
+    if (st < lastScrollTop) {
+      this.setState({ goingUp: true });
+    } else {
+      this.setState({ goingUp: false });
+    }
+    lastScrollTop = st <= 0 ? 0 : st;
+    this.setState({
+      pos: lastScrollTop
     });
   }
 
   render() {
     const { classes } = this.props;
+    const { top, goingUp, detached } = this.state;
     return (
       <div className={classes.root}>
         <AppBar
           className={
-            this.state.top
-              ? `${classes.navtop}`
-              : `${this.state.goingUp ? classes.navshow : classes.navhidden}`
+            top
+              ? classes.navtop
+              : goingUp && detached
+                ? classes.navshow
+                : detached
+                  ? classes.navhidden
+                  : classes.invisible
           }
         >
           <Toolbar>
-            <Typography
-              variant="title"
-              color="inherit"
-              className={classes.flex}
-            >
+            <Typography variant="title" color="inherit" className={classes.flex}>
               Denver Dev Shop
             </Typography>
             <Button smooth component={Link} color="inherit" to="/#home">
@@ -92,7 +165,6 @@ class NavBar extends Component {
             </Button>
           </Toolbar>
         </AppBar>
-        <div ref="scan" width={300} height={1} />
       </div>
     );
   }

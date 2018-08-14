@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import About from './Info';
 import UnionStation from '../images/unionStation.jpg';
 import Form from './Form';
 const env = process.env.NODE_ENV || 'development';
@@ -15,14 +16,14 @@ const env = process.env.NODE_ENV || 'development';
 const styles = {
   root: {
     flexGrow: 1,
-    width: '100%'
+    width: '100%',
   },
   main: {
     background: `linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ), url(${UnionStation}) no-repeat center center`,
-    height: '100vh',
+    height: '80vh',
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
@@ -37,14 +38,6 @@ const styles = {
     width: '100%',
     padding: '20px',
     backgroundImage: 'hsl(210, 9%, 96%)'
-  },
-  aboutInfo: {
-    height: '400px',
-    margin: 'auto 10px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    boxShadow: '0 2px 6px 0 hsla(0, 0%, 0.2)'
   },
   contact: {
     height: '400px'
@@ -93,23 +86,9 @@ class HomePage extends Component {
               Contact Us
             </Button>
           </div>
-          <Grid container className={classes.about} id="about">
-            <Grid item xs>
-              <Paper className={classes.aboutInfo} elevation={12}>
-                <Typography variant="display3">Who</Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={4}>
-              <Paper className={classes.aboutInfo} elevation={12}>
-                <Typography variant="display3">What</Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs>
-              <Paper className={classes.aboutInfo} elevation={12}>
-                <Typography variant="display3">Why</Typography>
-              </Paper>
-            </Grid>
-          </Grid>
+          <div id="about">
+            <About />
+          </div>
           <div id="contact">
             <Form />
           </div>
