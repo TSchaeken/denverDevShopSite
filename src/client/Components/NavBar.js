@@ -21,6 +21,7 @@ const styles = {
     width: '100%',
     top: 0,
     backgroundColor: 'transparent',
+    color:'white',
     transition: 'background-color 0.5s, color 0.5s'
   },
   navshow: {
@@ -99,11 +100,6 @@ class NavBar extends Component {
         });
         break;
       }
-      // case 0 < x && x <= 650 && this.state.detached === true: {
-      //   this.setState({
-      //   });
-      //   break;
-      // }
       case x > 650: {
         this.setState({
           top: false,

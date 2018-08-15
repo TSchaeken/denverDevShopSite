@@ -34,6 +34,33 @@ const styles = {
     color: '#eeeeee',
     marginLeft: '25px'
   },
+  titleInfo1: {
+    position:'relative',
+    left:'25px',
+    color: '#eeeeee',
+    transition: 'left 1s, color 2s',
+    transitionDelay:'0.25s'
+  },
+  titleInfo2: {
+    position:'relative',
+    left:'25px',
+    color: '#eeeeee',
+    transition: 'left 1s, color 2s',
+    transitionDelay: '0.35s'
+  },
+  titleInfo3: {
+    position:'relative',
+    left:'25px',
+    color: '#eeeeee',
+    transition: 'left 1s, color 2s',
+    transitionDelay: '0.45s'
+
+  },
+  titleInfoHidden: {
+    color: 'transparent',
+    position: 'relative',
+    left:'100px'
+  },
   about: {
     width: '100%',
     padding: '20px',
@@ -47,6 +74,18 @@ const styles = {
 class HomePage extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      infoStyle1: 'titleInfoHidden',
+      infoStyle2: 'titleInfoHidden',
+      infoStyle3: 'titleInfoHidden',
+    }
+  }
+  componentDidMount(){
+    this.setState({
+      infoStyle1: 'titleInfo1',
+      infoStyle2: 'titleInfo2',
+      infoStyle3: 'titleInfo3',
+    })
   }
   head() {
     return (
@@ -63,6 +102,7 @@ class HomePage extends Component {
   }
   render() {
     const { classes } = this.props;
+    const {infoStyle1, infoStyle2, infoStyle3} = this.state
     return (
       <div>
         {this.head()}
@@ -72,13 +112,13 @@ class HomePage extends Component {
               Denver Dev Shop
             </Typography>
             <div>
-              <Typography variant="display3" className={classes.title}>
+              <Typography variant="display3" className={classes[infoStyle1]}>
                 Design
               </Typography>
-              <Typography variant="display3" className={classes.title}>
+              <Typography variant="display3" className={classes[infoStyle2]}>
                 Develop
               </Typography>
-              <Typography variant="display3" className={classes.title}>
+              <Typography variant="display3" className={classes[infoStyle3]}>
                 Deliver
               </Typography>
             </div>
