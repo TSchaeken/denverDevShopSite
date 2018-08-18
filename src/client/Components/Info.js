@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Grid,
-  Divider,
-  Typography,
-  withStyles,
-  Button
-} from '@material-ui/core';
+import { Grid, Divider, Typography, withStyles, Button } from '@material-ui/core';
 
 const styles = {
   aboutInfo: {
@@ -20,12 +14,18 @@ const styles = {
   },
   text: {
     whiteSpace: 'pre-line',
-    width: '60%'
+    width: '60%',
+    padding: '25px',
+    boxShadow: '0 19px 38px rgba(0,0,0,0.1), 0 15px 12px rgba(0,0,0,0.22)'
   },
   guide: {
-    height: '20vh',
+    height: '15vh',
     fontSize: '100px',
-    width:'100%'
+    width: '100%'
+  },
+  divider: {
+    marginTop:'20px',
+    width:'60%',
   }
 };
 
@@ -51,14 +51,14 @@ class Info extends Component {
         <Grid
           container
           justify={'center'}
-          direction={'row'}
           alignItems={'center'}
+          direction="column"
           className={classes.guide}
         >
           <Grid item>
-            <Typography variant="display2">What makes us different</Typography>
-            <Divider />
+            <Typography variant="display2">Who are we</Typography>
           </Grid>
+          <Divider className={classes.divider}/>
         </Grid>
         <Grid
           container
@@ -68,11 +68,7 @@ class Info extends Component {
           className={classes.buttons}
         >
           <Grid item>
-            <Button
-              name="who"
-              className={classes.buttons}
-              onClick={() => this.handleClick('who')}
-            >
+            <Button name="who" className={classes.buttons} onClick={() => this.handleClick('who')}>
               Who
             </Button>
           </Grid>
@@ -86,21 +82,12 @@ class Info extends Component {
             </Button>
           </Grid>
           <Grid item>
-            <Button
-              name="why"
-              className={classes.buttons}
-              onClick={() => this.handleClick('why')}
-            >
+            <Button name="why" className={classes.buttons} onClick={() => this.handleClick('why')}>
               Why
             </Button>
           </Grid>
         </Grid>
-        <Grid
-          container
-          justify={'center'}
-          alignItems={'center'}
-          className={classes.textbox}
-        >
+        <Grid container justify={'center'} alignItems={'center'} className={classes.textbox}>
           <Grid item className={classes.text}>
             {this.state[this.state.active]}
           </Grid>
