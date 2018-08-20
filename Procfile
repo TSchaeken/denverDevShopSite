@@ -1,1 +1,1 @@
-web: npm-run-all --parallel dev:*
+web: npm-run-all --parallel prod:*
