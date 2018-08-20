@@ -1,1 +1,1 @@
-worker: npm-run-all --parallel prod:*
+web: npm-run-all --parallel dev:*
