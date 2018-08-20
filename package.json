@@ -11,7 +11,9 @@
     "prod": "npm-run-all --parallel prod:*",
     "prod:server": "node build/bundle.js",
     "prod:build-server": "webpack --config webpack.server.js",
-    "prod:build-client": "webpack --config webpack.client.js"
+    "prod:build-client": "webpack --config webpack.client.js",
+    "heroku-prebuild": "npm run prod:build-server && npm run prod:build-client",
+    "start": "node build/bundle.js"
   },
   "author": "Noah Schutte",
   "license": "ISC",
