@@ -9,7 +9,7 @@
     "dev:build-server": "webpack --config webpack.server.js --watch",
     "dev:build-client": "webpack --config webpack.client.js --watch",
     "prod": "npm-run-all --parallel prod:*",
-    "start": "node build/bundle.js",
+    "start": "node bundle.js",
     "prod:build-server": "webpack --config webpack.server.js",
     "prod:build-client": "webpack --config webpack.client.js"
   },
