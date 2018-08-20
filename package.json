@@ -10,8 +10,8 @@
     "dev:build-client": "webpack --config webpack.client.js --watch",
     "start": "npm-run-all --parallel prod:*",
     "prod:server": "node build/bundle.js",
-    "prod:build-server": "webpack --config webpack.server.js --watch",
-    "prod:build-client": "webpack --config webpack.client.js --watch"
+    "prod:build-server": "webpack --config webpack.server.js",
+    "prod:build-client": "webpack --config webpack.client.js"
   },
   "author": "Noah Schutte",
   "license": "ISC",
