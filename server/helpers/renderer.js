@@ -1,7 +1,7 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
-import Routes from '../client/Routes'
+import App from '../../src/client/App'
 import { Helmet } from 'react-helmet'
 import {SheetsRegistry} from "react-jss/lib/jss";
 import JssProvider from 'react-jss/lib/JssProvider';
@@ -27,7 +27,7 @@ export default (req) => {
     <JssProvider registry={sheetsRegistry} generateClassName={generateClassName}>
       <MuiThemeProvider theme={theme} sheetsManager={new Map()}>
         <StaticRouter location={req.path} context={{}}>
-            <Routes />
+            <App />
         </StaticRouter>
       </MuiThemeProvider>
     </JssProvider>
