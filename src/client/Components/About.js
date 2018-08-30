@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Divider, Typography, withStyles, Button } from '@material-ui/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const styles = {
   aboutInfo: {
@@ -19,31 +20,48 @@ const styles = {
     boxShadow: '0 19px 38px rgba(0,0,0,0.1), 0 15px 12px rgba(0,0,0,0.22)'
   },
   guide: {
-    position:'relative',
-    top:'-15vh',
+    position: 'relative',
+    top: '-15vh',
     height: '35vh',
     width: '90%',
-    margin:'auto',
-    zindex:'999',
-    backgroundColor:'#dedede',
-    borderRadius:'3px'
+    margin: 'auto',
+    zindex: '999',
+    backgroundColor: '#dedede',
+    borderRadius: '3px'
   },
   divider: {
-    margin:'20px auto',
-    width:'60%',
+    margin: '20px auto',
+    width: '60%'
   },
   guideText: {
-    color:'#111d2e',
+    color: '#111d2e',
     fontSize: '3.5em',
-    marginTop:'20px',
+    marginTop: '20px'
   },
   whatInfo: {
-    fontSize:'2em',
-    width:'60%',
+    fontSize: '2em',
+    width: '60%',
     color: '#111d2e',
-    textAlign:'center',
-    margin:'auto'
-  }
+    textAlign: 'center',
+    margin: 'auto'
+  },
+  aboutContainer: {
+    position: 'relative',
+    top: '-10vh',
+    height: '500px',
+    width: '80%',
+    margin: 'auto'
+  },
+  aboutDetail: {
+    height: '450px',
+    width: '400px',
+    margin: 'auto',
+    border: '1px solid black'
+  },
+  aboutDetailContainer: {
+    margin: '0 35px'
+  },
+  aboutIcon: {}
 };
 
 class Info extends Component {
@@ -75,14 +93,68 @@ class Info extends Component {
           <Grid item>
             <Typography className={classes.guideText}>Our Mission</Typography>
           </Grid>
-          <Divider className={classes.divider}/>
+          <Divider className={classes.divider} />
           <Grid item>
             <Typography className={classes.whatInfo}>
-            Denver Dev Shop delivers to delivering modern, sustainable, and scalable software. Designed from the ground up for your specific software needs.
+              Denver Dev Shop delivers to delivering modern, sustainable, and scalable software.
+              Designed from the ground up for your specific software needs.
             </Typography>
           </Grid>
         </Grid>
-        <Grid
+        <Grid container justify={'center'} alignItems={'center'} className={classes.aboutContainer}>
+          <Grid item className={classes.aboutDetailContainer}>
+            <Grid
+              container
+              justify={'center'}
+              alignItems={'flex-start'}
+              className={classes.aboutDetail}
+            >
+              <Grid item>
+                <FontAwesomeIcon
+                  icon="check-square"
+                  size="10x"
+                  color="#111d2e"
+                  className={classes.aboutIcon}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item className={classes.aboutDetailContainer} className={classes.aboutIcon}>
+          <Grid
+              container
+              justify={'center'}
+              alignItems={'flex-start'}
+              className={classes.aboutDetail}
+            >
+              <Grid item>
+                <FontAwesomeIcon
+                  icon="database"
+                  size="10x"
+                  color="#111d2e"
+                  className={classes.aboutIcon}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item className={classes.aboutDetailContainer}>
+          <Grid
+              container
+              justify={'center'}
+              alignItems={'flex-start'}
+              className={classes.aboutDetail}
+            >
+              <Grid item>
+                <FontAwesomeIcon
+                  icon="coffee"
+                  size="10x"
+                  color="#111d2e"
+                  className={classes.aboutIcon}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+        {/* <Grid
           container
           justify={'center'}
           direction={'row'}
@@ -114,7 +186,7 @@ class Info extends Component {
             {this.state[this.state.active]}
           </Grid>
           <Grid />
-        </Grid>
+        </Grid> */}
       </div>
     );
   }

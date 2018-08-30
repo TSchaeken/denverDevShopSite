@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { withStyles } from '@material-ui/core/styles';
 import Title from './Title';
-import About from './Info';
+import About from './About';
 import UnionStation from '../images/unionStation.jpg';
 import Form from './Form';
 const env = process.env.NODE_ENV || 'development';
@@ -34,7 +34,13 @@ const styles = {
   },
   contact: {
     height: '400px'
-  }
+  },
+  what: {
+    height: '60vh',
+    width: '100%',
+    padding: '20px',
+    background: '#dedede '
+  },
 };
 
 class HomePage extends Component {
@@ -64,6 +70,7 @@ class HomePage extends Component {
           <div id="about" className={classes.about}>
             <About />
           </div>
+          <div className={classes.what}></div>
           <div id="contact">
             <Form />
           </div>

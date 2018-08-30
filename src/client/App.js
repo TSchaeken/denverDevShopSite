@@ -3,6 +3,10 @@ import { Route } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Main from './Components/Main';
 import NavBar from './Components/NavBar';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheckSquare, faCoffee, faDatabase } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faCheckSquare, faCoffee, faDatabase);
 
 class App extends Component {
   componentDidMount() {
