@@ -34,7 +34,7 @@ const styles = {
   },
   guideText: {
     color:'#111d2e',
-    fontSize: '4em',
+    fontSize: '3.5em',
     marginTop:'20px',
   },
   whatInfo: {
