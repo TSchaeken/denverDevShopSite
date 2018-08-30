@@ -19,7 +19,7 @@ const styles = {
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ), url(${UnionStation}) no-repeat center center`,
-    height: '85vh',
+    height: '100vh',
     width: '100%',
     backgroundSize: 'cover',
     display: 'flex',
@@ -27,9 +27,10 @@ const styles = {
     alignItems: 'center',
   },
   about: {
+    height: '80vh',
     width: '100%',
     padding: '20px',
-    backgroundImage: 'hsl(210, 9%, 96%)'
+    background: '#ededed '
   },
   contact: {
     height: '400px'
@@ -60,7 +61,7 @@ class HomePage extends Component {
           <div id="home" className={classes.title}>
             <Title />
           </div>
-          <div id="about">
+          <div id="about" className={classes.about}>
             <About />
           </div>
           <div id="contact">

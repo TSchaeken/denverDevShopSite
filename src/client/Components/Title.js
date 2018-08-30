@@ -62,6 +62,7 @@ class Title extends Component {
       infoStyle3: 'titleInfo3'
     });
   }
+
   render() {
     const { classes } = this.props;
     const { infoStyle1, infoStyle2, infoStyle3 } = this.state;

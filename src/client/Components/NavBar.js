@@ -30,14 +30,14 @@ const styles = {
     top: 0,
     transition: 'top 0.3s',
     backgroundColor: 'white',
-    color: 'black'
+    color: '#111d2e'
   },
   navhidden: {
     width: '100%',
     top: '-100px',
     transition: 'top 0.5s',
     backgroundColor: 'white',
-    color: 'black'
+    color: '#111d2e'
   },
   invisible: {
     width: '100%',

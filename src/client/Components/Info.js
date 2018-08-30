@@ -19,13 +19,30 @@ const styles = {
     boxShadow: '0 19px 38px rgba(0,0,0,0.1), 0 15px 12px rgba(0,0,0,0.22)'
   },
   guide: {
-    height: '15vh',
-    fontSize: '100px',
-    width: '100%'
+    position:'relative',
+    top:'-15vh',
+    height: '35vh',
+    width: '90%',
+    margin:'auto',
+    zindex:'999',
+    backgroundColor:'#dedede',
+    borderRadius:'3px'
   },
   divider: {
-    marginTop:'20px',
+    margin:'20px auto',
     width:'60%',
+  },
+  guideText: {
+    color:'#111d2e',
+    fontSize: '4em',
+    marginTop:'20px',
+  },
+  whatInfo: {
+    fontSize:'2em',
+    width:'60%',
+    color: '#111d2e',
+    textAlign:'center',
+    margin:'auto'
   }
 };
 
@@ -50,15 +67,20 @@ class Info extends Component {
       <div>
         <Grid
           container
-          justify={'center'}
+          justify={'flex-start'}
           alignItems={'center'}
           direction="column"
           className={classes.guide}
         >
           <Grid item>
-            <Typography variant="display2">Who are we</Typography>
+            <Typography className={classes.guideText}>Our Mission</Typography>
           </Grid>
           <Divider className={classes.divider}/>
+          <Grid item>
+            <Typography className={classes.whatInfo}>
+            Denver Dev Shop delivers to delivering modern, sustainable, and scalable software. Designed from the ground up for your specific software needs.
+            </Typography>
+          </Grid>
         </Grid>
         <Grid
           container
