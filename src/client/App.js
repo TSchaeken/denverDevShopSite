@@ -7,10 +7,10 @@ import styles from './styles/main.scss';
 
 class App extends Component {
   componentDidMount() {
-    // const jssStyles = document.getElementById('jss-server-side');
-    // if (jssStyles && jssStyles.parentNode) {
-    //   jssStyles.parentNode.removeChild(jssStyles);
-    // }
+    const jssStyles = document.getElementById('jss-server-side');
+    if (jssStyles && jssStyles.parentNode) {
+      jssStyles.parentNode.removeChild(jssStyles);
+    }
   }
 
   render() {

@@ -13,10 +13,6 @@ export default (req) => {
     </StaticRouter>
   );
   const css = sheetsRegistry.toString();
-  const materialHead = `
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Robo;o:300,400,500">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  `;
 
   const headTagManager = `
     <!-- Google Tag Manager -->
@@ -57,9 +53,8 @@ export default (req) => {
         ${helmet.title.toString()}
         ${helmet.meta.toString()}
         ${helmet.link.toString()}
-        ${materialHead}
       </head>
-      <body style="margin: 0; padding: 0;" ${helmet.bodyAttributes.toString()}>
+      <body ${helmet.bodyAttributes.toString()}>
         ${bodyTagManager}
         <div id="root">${content}</div>
         <style id="jss-server-side">${css}</style>
