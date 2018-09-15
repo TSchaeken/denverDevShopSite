@@ -8,6 +8,8 @@ import { Helmet } from 'react-helmet';
 
 //Photo by Owen CL on Unsplash
 
+import styles from './Main.scss';
+
 class HomePage extends Component {
   head = () => (
     <Helmet>
@@ -23,7 +25,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.root}>
         {this.head()}
         <div>
           Focused on Being a Devshop
