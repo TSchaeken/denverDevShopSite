@@ -9,8 +9,8 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           plugins: ['transform-class-properties'],
-          presets: ['react', 'stage-0', ['env', { targets: { browsers: ['last 2 versions'] } }]]
-        }
+          presets: ['react', 'stage-0', ['env', { targets: { browsers: ['last 2 versions'] } }]],
+        },
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/,
@@ -20,11 +20,11 @@ module.exports = {
             loader: 'image-webpack-loader',
             options: {
               bypassOnDebug: true, // webpack@1.x
-              disable: true // webpack@2.x and newer
-            }
-          }
-        ]
-      }
-    ]
-  }
+              disable: true, // webpack@2.x and newer
+            },
+          },
+        ],
+      },
+    ],
+  },
 };

@@ -1,51 +1,52 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { HashLink as Link } from 'react-router-hash-link';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import _ from 'lodash';
+// import PropTypes from 'prop-types';
+// import { HashLink as Link } from 'react-router-hash-link';
+// import { withStyles } from '@material-ui/core/styles';
+// import AppBar from '@material-ui/core/AppBar';
+// import Toolbar from '@material-ui/core/Toolbar';
+// import Typography from '@material-ui/core/Typography';
+// import Button from '@material-ui/core/Button';
+// import _ from 'lodash';
+// import theme from '../styles/main.scss';
 
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  flex: {
-    flexGrow: 1,
-  },
-  navtop: {
-    position: 'absolute',
-    boxShadow: 'none',
-    width: '100%',
-    top: 0,
-    backgroundColor: 'transparent',
-    color: 'white',
-    transition: 'background-color 0.5s, color 0.5s',
-  },
-  navshow: {
-    position: 'fixed',
-    width: '100%',
-    top: 0,
-    transition: 'top 0.3s',
-    backgroundColor: 'white',
-    color: 'black',
-  },
-  navhidden: {
-    width: '100%',
-    top: '-100px',
-    transition: 'top 0.5s',
-    backgroundColor: 'white',
-    color: 'black',
-  },
-  invisible: {
-    width: '100%',
-    top: '-100px',
-    backgroundColor: 'transparent',
-    color: 'transparent',
-  },
-};
+// const styles = {
+//   root: {
+//     flexGrow: 1,
+//   },
+//   flex: {
+//     flexGrow: 1,
+//   },
+//   navtop: {
+//     position: 'absolute',
+//     boxShadow: 'none',
+//     width: '100%',
+//     top: 0,
+//     backgroundColor: 'white',
+//     color: 'white',
+//     transition: 'background-color 0.5s, color 0.5s',
+//   },
+//   navshow: {
+//     position: 'fixed',
+//     width: '100%',
+//     top: 0,
+//     transition: 'top 0.3s',
+//     backgroundColor: 'white',
+//     color: 'black',
+//   },
+//   navhidden: {
+//     width: '100%',
+//     top: '-100px',
+//     transition: 'top 0.5s',
+//     backgroundColor: 'white',
+//     color: 'black',
+//   },
+//   invisible: {
+//     width: '100%',
+//     top: '-100px',
+//     backgroundColor: 'transparent',
+//     color: 'transparent',
+//   },
+// };
 
 class NavBar extends Component {
   constructor() {
@@ -57,8 +58,8 @@ class NavBar extends Component {
       pos: 0,
     };
 
-    this.topDetect = _.throttle(this.topDetect.bind(this), 50);
-    this.scrollDirection = _.throttle(this.scrollDirection.bind(this), 50, { leading: true });
+    // this.topDetect = _.throttle(this.topDetect.bind(this), 50);
+    // this.scrollDirection = _.throttle(this.scrollDirection.bind(this), 50, { leading: true });
   }
 
   componentDidMount() {
@@ -115,59 +116,51 @@ class NavBar extends Component {
     }
   }
 
-  scrollDirection() {
-    const { pos } = this.state;
-    let lastScrollTop = pos;
-    let st = window.pageYOffset || document.documentElement.scrollTop;
-    if (st < lastScrollTop) {
-      this.setState({ goingUp: true });
-    } else {
-      this.setState({ goingUp: false });
-    }
-    lastScrollTop = st <= 0 ? 0 : st;
-    this.setState({
-      pos: lastScrollTop,
-    });
-  }
+  // scrollDirection() {
+  //   const { pos } = this.state;
+  //   let lastScrollTop = pos;
+  //   let st = window.pageYOffset || document.documentElement.scrollTop;
+  //   if (st < lastScrollTop) {
+  //     this.setState({ goingUp: true });
+  //   } else {
+  //     this.setState({ goingUp: false });
+  //   }
+  //   lastScrollTop = st <= 0 ? 0 : st;
+  //   this.setState({
+  //     pos: lastScrollTop,
+  //   });
+  // }
 
   render() {
-    const { classes } = this.props;
-    const { top, goingUp, detached } = this.state;
+    // const { classes } = this.props;
     return (
-      <div className={classes.root}>
-        <AppBar
-          className={
-            top
-              ? classes.navtop
-              : goingUp && detached
-                ? classes.navshow
-                : detached
-                  ? classes.navhidden
-                  : classes.invisible
-          }
+      <div>
+        <div>Nav Bar</div>
+        {/* <AppBar
+          className={classes.navtop}
         >
           <Toolbar>
-            <Typography variant='title' color='inherit' className={classes.flex}>
+            <Typography variant='title' color='textPrimary' className={classes.flex}>
               Denver Dev Shop
             </Typography>
-            <Button smooth component={Link} color='inherit' to='/#home'>
+            <Button smooth component={Link} color='primary' to='/#home'>
               Home
             </Button>
-            <Button smooth component={Link} color='inherit' to='/#about'>
+            <Button smooth component={Link} color='primary' to='/#about'>
               About
             </Button>
-            <Button smooth component={Link} color='inherit' to='/#contact'>
+            <Button smooth component={Link} color='primary' to='/#contact'>
               Contact Us
             </Button>
           </Toolbar>
-        </AppBar>
+        </AppBar> */}
       </div>
     );
   }
 }
 
 NavBar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  // classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(NavBar);
+export default NavBar;
