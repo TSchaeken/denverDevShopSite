@@ -10,10 +10,10 @@ import _ from 'lodash';
 
 const styles = {
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   flex: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   navtop: {
     position: 'absolute',
@@ -21,8 +21,8 @@ const styles = {
     width: '100%',
     top: 0,
     backgroundColor: 'transparent',
-    color:'white',
-    transition: 'background-color 0.5s, color 0.5s'
+    color: 'white',
+    transition: 'background-color 0.5s, color 0.5s',
   },
   navshow: {
     position: 'fixed',
@@ -30,21 +30,21 @@ const styles = {
     top: 0,
     transition: 'top 0.3s',
     backgroundColor: 'white',
-    color: 'black'
+    color: 'black',
   },
   navhidden: {
     width: '100%',
     top: '-100px',
     transition: 'top 0.5s',
     backgroundColor: 'white',
-    color: 'black'
+    color: 'black',
   },
   invisible: {
     width: '100%',
     top: '-100px',
     backgroundColor: 'transparent',
-    color: 'transparent'
-  }
+    color: 'transparent',
+  },
 };
 
 class NavBar extends Component {
@@ -54,7 +54,7 @@ class NavBar extends Component {
       top: true,
       detached: false,
       goingUp: false,
-      pos: 0
+      pos: 0,
     };
 
     this.topDetect = _.throttle(this.topDetect.bind(this), 50);
@@ -75,48 +75,49 @@ class NavBar extends Component {
 
   topDetect() {
     let x = window.pageYOffset || document.documentElement.scrollTop;
-    console.log(x);
+    const { detached } = this.state;
     switch (true) {
-      case x == 0: {
-        this.setState({
-          top: true,
-          detached: false,
-          goingUp: false,
-          pos: 0
-        });
-        break;
-      }
-      case 0 < x && x <= 400 && this.state.detached === false: {
-        this.setState({
-          top: true,
-          detached: false
-        });
-        break;
-      }
-      case 400 < x && x <= 650 && this.state.detached === false: {
-        this.setState({
-          top: false,
-          detached: false
-        });
-        break;
-      }
-      case x > 650: {
-        this.setState({
-          top: false,
-          detached: true
-        });
-        break;
-      }
-      default: {
-        this.setState({
-          ...this.state
-        });
-      }
+    case x === 0: {
+      this.setState({
+        top: true,
+        detached: false,
+        goingUp: false,
+        pos: 0,
+      });
+      break;
+    }
+    case x > 0 && x <= 400 && detached === false: {
+      this.setState({
+        top: true,
+        detached: false,
+      });
+      break;
+    }
+    case x > 400 && x <= 650 && detached === false: {
+      this.setState({
+        top: false,
+        detached: false,
+      });
+      break;
+    }
+    case x > 650: {
+      this.setState({
+        top: false,
+        detached: true,
+      });
+      break;
+    }
+    default: {
+      this.setState((prevState) => ({
+        ...prevState,
+      }));
+    }
     }
   }
 
   scrollDirection() {
-    let lastScrollTop = this.state.pos;
+    const { pos } = this.state;
+    let lastScrollTop = pos;
     let st = window.pageYOffset || document.documentElement.scrollTop;
     if (st < lastScrollTop) {
       this.setState({ goingUp: true });
@@ -125,7 +126,7 @@ class NavBar extends Component {
     }
     lastScrollTop = st <= 0 ? 0 : st;
     this.setState({
-      pos: lastScrollTop
+      pos: lastScrollTop,
     });
   }
 
@@ -146,16 +147,16 @@ class NavBar extends Component {
           }
         >
           <Toolbar>
-            <Typography variant="title" color="inherit" className={classes.flex}>
+            <Typography variant='title' color='inherit' className={classes.flex}>
               Denver Dev Shop
             </Typography>
-            <Button smooth component={Link} color="inherit" to="/#home">
+            <Button smooth component={Link} color='inherit' to='/#home'>
               Home
             </Button>
-            <Button smooth component={Link} color="inherit" to="/#about">
+            <Button smooth component={Link} color='inherit' to='/#about'>
               About
             </Button>
-            <Button smooth component={Link} color="inherit" to="/#contact">
+            <Button smooth component={Link} color='inherit' to='/#contact'>
               Contact Us
             </Button>
           </Toolbar>
@@ -166,7 +167,7 @@ class NavBar extends Component {
 }
 
 NavBar.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(NavBar);
