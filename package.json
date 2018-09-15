@@ -13,7 +13,11 @@
     "prod:build-server": "webpack --config webpack.server.js",
     "prod:build-client": "webpack --config webpack.client.js",
     "heroku-prebuild": "npm run prod:build-server && npm run prod:build-client",
-    "start": "node build/bundle.js"
+    "start": "node build/bundle.js",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "deploy": "git push heroku master:master",
+    "open": "heroku open -a denverdevshopsite"
   },
   "author": "Noah Schutte",
   "license": "ISC",
