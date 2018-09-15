@@ -59,7 +59,7 @@ export default (req) => {
         ${helmet.link.toString()}
         ${materialHead}
       </head>
-      <body ${helmet.bodyAttributes.toString()}>
+      <body style="margin: 0; padding: 0;" ${helmet.bodyAttributes.toString()}>
         ${bodyTagManager}
         <div id="root">${content}</div>
         <style id="jss-server-side">${css}</style>

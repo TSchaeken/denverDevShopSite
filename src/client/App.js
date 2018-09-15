@@ -3,6 +3,8 @@ import { Route } from 'react-router-dom';
 import Main from './Components/Main';
 import NavBar from './Components/NavBar';
 
+import styles from './styles/main.scss';
+
 class App extends Component {
   componentDidMount() {
     // const jssStyles = document.getElementById('jss-server-side');
@@ -13,7 +15,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.root}>
         <NavBar />
         <Route exact path='/' component={Main} />
       </div>

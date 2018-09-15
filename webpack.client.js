@@ -16,7 +16,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(scss|css)$/,
+        test: /\.scss$/,
         use: [
           {
             loader: 'style-loader',
@@ -26,16 +26,12 @@ const config = {
             options: {
               modules: true,
               importLoaders: 1,
-              localIdentName: '[name]_[local]_[hash:base64]',
+              localIdentName: '[name]__[local]___[hash:base64:5]',
               sourceMap: true,
-              minimize: true,
             },
           },
           {
             loader: 'sass-loader',
-            options: {
-              includePath: path.resolve(__dirname, './src/client/styles/main.scss'),
-            },
           },
         ],
       },
