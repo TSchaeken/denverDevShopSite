@@ -11,7 +11,7 @@
     "heroku-postbuild": "webpack --config webpack.server.js && webpack --config webpack.client.js",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "start": "node build/bundle.js --watch",
+    "start": "node build/bundle.js",
     "deploy": "git push heroku master:master",
     "open": "heroku open -a denverdevshopsite"
   },
