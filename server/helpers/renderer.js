@@ -53,12 +53,11 @@ export default (req) => {
         ${helmet.title.toString()}
         ${helmet.meta.toString()}
         ${helmet.link.toString()}
-        <link rel="stylesheet" type="text/css" href="./style.css">
       </head>
       <body ${helmet.bodyAttributes.toString()}>
         ${bodyTagManager}
         <div id="root">${content}</div>
-        <script src="bundle.js"></script>
+        <script src="./bundle.js"></script>
       </body>
     </html>
   `;

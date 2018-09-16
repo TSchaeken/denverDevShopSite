@@ -30,6 +30,7 @@ class HomePage extends Component {
       <div className={styles.root}>
         {this.head()}
         <TagLine />
+        <button onClick={() => console.log("hi!")}>Hey there</button>
       </div>
     );
   }
