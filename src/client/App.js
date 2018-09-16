@@ -11,12 +11,25 @@ class App extends Component {
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles);
     }
+
+    window.addEventListener('scroll', this.setScrollY);
+  }
+
+  state = {
+    scrollY: 0,
+  };
+
+  setScrollY = () => {
+    this.setState(() => ({
+      scrollY: window.scrollY,
+    }));
   }
 
   render() {
+    const { scrollY } = this.state;
     return (
       <div className={styles.root}>
-        <NavBar />
+        <NavBar scrolled={scrollY >= 64} />
         <Route exact path='/' component={Main} />
       </div>
     );
