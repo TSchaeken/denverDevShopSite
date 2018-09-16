@@ -19,6 +19,7 @@ class HomePage extends Component {
       <meta property='og:description' content='Custom Software Development' />
       <meta property='og:image' content='' />
       <meta property='og:type' content='article' />
+      <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       <link rel='canonical' href='http://www.denverdevshop.com' />
     </Helmet>
   );
