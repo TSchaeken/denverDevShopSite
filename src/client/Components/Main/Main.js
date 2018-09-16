@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 // import About from './Info';
 // import UnionStation from '../images/unionStation.jpg';
 // import Form from './Form';
+import TagLine from '../TagLine';
 
 //Photo by Owen CL on Unsplash
 
@@ -28,10 +29,7 @@ class HomePage extends Component {
     return (
       <div className={styles.root}>
         {this.head()}
-        <div>
-          Focused on Being a Devshop
-          This is body. The Body.
-        </div>
+        <TagLine />
       </div>
     );
   }

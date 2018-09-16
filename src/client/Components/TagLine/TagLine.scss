@@ -1,0 +1,27 @@
+@import '../../styles/main.scss';
+
+* {
+  // border: 2px dotted limegreen;
+}
+
+.root {
+  height: 530px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.headline {
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1.25rem;
+  margin: $spacing-lg;
+}
+
+.followUp {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $grey;
+  margin: $spacing-lg;
+}
