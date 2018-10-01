@@ -5,8 +5,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const baseConfig = require('./webpack.base.js');
 
 const extractSass = new ExtractTextPlugin({
-    filename: "../public/styles.css",
-    allChunks: true,
+  filename: "../public/styles.css",
+  allChunks: true,
 });
 
 const config = {
@@ -32,19 +32,19 @@ const config = {
         test: /\.scss$/,
         use: extractSass.extract({
           use: [
-              {
-                  loader: 'css-loader',
-                  options: {
-                      modules: true,
-                      importLoaders: 1,
-                      localIdentName: '[name]__[local]___[hash:base64:5]',
-                  },
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                importLoaders: 1,
+                localIdentName: '[name]__[local]___[hash:base64:5]',
               },
-              {
-                  loader: 'sass-loader',
-              },
+            },
+            {
+              loader: 'sass-loader',
+            },
           ],
-          fallback: "style-loader"
+          fallback: "style-loader",
         }),
       },
     ],

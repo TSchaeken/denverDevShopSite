@@ -58,5 +58,5 @@ export default (req) => {
       </body>
     </html>`;
 
-    return data;
+  return data;
 };
