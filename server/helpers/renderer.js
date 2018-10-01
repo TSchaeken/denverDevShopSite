@@ -2,17 +2,14 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-// import { SheetsRegistry } from "react-jss/lib/jss";
 import App from '../../src/client/App';
 
 export default (req) => {
-  // const sheetsRegistry = new SheetsRegistry();
   const content = renderToString(
     <StaticRouter location={req.path} context={{}}>
       <App />
     </StaticRouter>
   );
-  // const css = sheetsRegistry.toString();
 
   const headTagManager = `
     <!-- Google Tag Manager -->
@@ -45,21 +42,21 @@ export default (req) => {
   //     </html>
   // )
 
-  return `
-    <!doctype html>
-    <html ${helmet.htmlAttributes.toString()}>
+  const data = `
+    <html>
       <head>
         ${headTagManager}
         ${helmet.title.toString()}
         ${helmet.meta.toString()}
         ${helmet.link.toString()}
-        <link rel="stylesheet" type="text/css" href="./style.css">
+        <link rel="stylesheet" href="./styles.css">
       </head>
       <body ${helmet.bodyAttributes.toString()}>
         ${bodyTagManager}
         <div id="root">${content}</div>
-        <script src="bundle.js"></script>
+        <script src="./bundle.js"></script>
       </body>
-    </html>
-  `;
+    </html>`;
+
+  return data;
 };
